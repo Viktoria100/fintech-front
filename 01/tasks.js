@@ -10,7 +10,7 @@
  */
 function getMinMax(string)
 {
-    {function getMaxOfArray(numArray)
+    function getMaxOfArray(numArray)
     {
         return Math.max.apply(null, numArray);
     }
@@ -183,12 +183,13 @@ function guessNumberA()
     {
         return Math.floor(Math.random() * (max - min)) + min;
     }
+    let k =0;
     let random=getRandomInt(1,101);
     let number = Number(window.prompt("Введи целое число от 1 до 100 :"));
 
     while (number!=random)
     {
-        number=Number(prompt("Введи целое число от 1 до 100 :"));
+        k++;
         if (number.toLowerCase() > random)
         {
             alert("Слишком много");
@@ -202,14 +203,57 @@ function guessNumberA()
     }
     if(number==random)
     {
+        k++;
         alert("В точку!");
-        console.log(random);
+        console.log("Угадал с " + k + " раза");
     }
 }
 
 /**
  * По завершению игры пользователю предлагается сыграть еще раз. После каждого тура выводится последний и лучший результаты.
  */
-function guessNumberB() {}
+let best=Infinity;
+function guessNumberB()
+{
+    function getRandomInt(min, max)
+    {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    let k = 0;
+    let random = getRandomInt(1, 101);
+    let number = prompt("Введи целое число от 1 до 100 :");
+
+    while (number != random)
+    {
+        k++;
+        if (number.toLowerCase() > random)
+        {
+            alert("Слишком много");
+            number = prompt("Попоробуй еще");
+        }
+        if (number.toLowerCase() < random)
+        {
+            alert("Слишком мало");
+            number = prompt("Попоробуй еще");
+        }
+    }
+    if (number == random)
+    {
+        k++;
+        alert("В точку!");
+        console.log("Угадал с " + k + " раза");
+        if (k < best)
+            best = k;
+        console.log("Твой лучший результат: " + best);
+    }
+    let continuation = prompt("Хочешь сыграть еще?");
+    if (continuation.toLowerCase() !== null)
+        guessNumberB();
+    else
+      {
+        console.log("Твой лучший результат: " + best);
+      }
+}
 
 /*=====  End of НЕ ВОШЛО В РЕЛИЗ  ======*/
