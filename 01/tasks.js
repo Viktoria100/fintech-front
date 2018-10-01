@@ -113,7 +113,7 @@ function printNumbers(max, cols)
         console.log(x[i].join(' '));
     }
 
-    return (x.join('\n'));
+   // return (x.join('\n'));
 
 }
 
