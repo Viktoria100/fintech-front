@@ -19,8 +19,9 @@ function getMinMax(string)
             return Math.min.apply(null, numArray);
         }
         const Arr = (string.split(/[А-я, !-, ,:-~ , / ]/));
-        console.log('min:'+' '+ getMinOfArray(Arr));
-        console.log('max:' +' '+ getMaxOfArray(Arr));
+    //console.log('max:' +' '+ getMaxOfArray(Arr));
+   // console.log('min:'+' '+ getMinOfArray(Arr));
+    return{min: getMinOfArray(Arr), max: getMaxOfArray(Arr)}
 }
 
 /* ============================================= */
@@ -106,8 +107,14 @@ function printNumbers(max, cols)
         }
     }
 
+
     for (let i=0; i<lines;i++)
+    {
         console.log(x[i].join(' '));
+    }
+
+    return (x.join('\n'));
+
 }
 
 
@@ -120,7 +127,7 @@ function printNumbers(max, cols)
  */
 function rle(input)
 {
-    let output=[];
+    let Array=[];
     let k=1;
     for(let i=1; i<=input.length;i++)
     {
@@ -130,15 +137,16 @@ function rle(input)
         }
         else
         {
-            output.push(input[i-1]);
+            Array.push(input[i-1]);
             if(k!=1)
             {
-                output.push(k);
+                Array.push(k);
             }
             k=1;
         }
     }
-    console.log(output.join(''));
+   // console.log(Array.join(''));
+    return(Array.join(''))
 
     //не работает, если элементы повторяются
     /* for (let i=0;i<input.length; i++)
