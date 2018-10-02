@@ -102,18 +102,32 @@ function printNumbers(max, cols)
         for (let j = 0; j < lines; j++)
         {
             if(k<=max)
-            {x[j][i] = k;
+            {
+                if(k<10 && i!=0)
+                    x[j][i] = '  ' + k;
+                else
+                    x[j][i]=' ' + k;
                 k++;}
         }
     }
 
-
-    for (let i=0; i<lines;i++)
+    let string=new Array();
+    for(let j=0; j<lines;j++)
     {
-        console.log(x[i].join(' '));
+        for (let i=0; i<cols;i++)
+    {
+
+        string.push(x[j][i]);
+
+    }
+    if(j!=lines-1)
+        string.push('\n');
     }
 
-   // return (x.join('\n'));
+    let s=string.toString();
+    let ss=s.split(/,/);
+    return (ss.join(''));
+
 
 }
 
